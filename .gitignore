@@ -1,3 +1,5 @@
 secret.py
 twitbotto.sublime-project
 twitbotto.sublime-workspace
+*.json
+/jsons/*

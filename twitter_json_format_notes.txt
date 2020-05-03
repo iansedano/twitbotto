@@ -1,0 +1,61 @@
+Twitter json to input to db
+
+
+{  
+"created_at": "Thu May 10 15:24:15 +0000 2018",
+ "id_str": "850006245121695744",
+ "text": "Here is the Tweet message.",
+ "user": {
+	"id": 6253282,
+	"name": "Twitter API",
+	"screen_name": "TwitterAPI",
+	"description": "The Real Twitter API. Tweets about API changes, service issues and our Developer Platform. Don't get an answer? It's on my website.",
+	"followers_count": 6133636,
+	"friends_count": 12,
+	"created_at": "Wed May 23 06:01:13 +0000 2007",
+	"verified": true,
+	"statuses_count": 3656,
+},
+
+ "extended_tweet": {
+		"full_text": "Just another Extended Tweet with more than 140 characters, generated as a documentation example, showing that [\"truncated\": true] and the presence of an \"extended_tweet\" object with complete text and \"entities\" #documentation #parsingJSON #GeoTagged https://t.co/e9yhQTJSIA",
+		"entities": {
+			"hashtags": [{
+				"text": "documentation",
+				"indices": [211, 225]
+			}
+		}
+ "retweeted_status": {
+      "text": "original message".
+        "user": {         
+            "screen_name": "OriginalTweeter"
+        },
+ "quoted_status": {
+    "text": "original message",
+    "user": {
+      "screen_name": "OriginalTweeter"
+    }
+}
+
+tweet["created_at"]
+tweet["id_str"]
+tweet["text"]
+
+tweet["user"]["id"]
+tweet["user"]["name"]
+tweet["user"]["screen_name"]
+tweet["user"]["description"]
+tweet["user"]["followers_count"]
+tweet["user"]["friends_count"]
+tweet["user"]["created_at"]
+tweet["user"]["verified"]
+tweet["user"]["statuses_count"]
+
+tweet["extended_tweet"]["full_text"]
+tweet["extended_tweet"]["entities"]["hashtags"]["text"]
+
+tweet["retweeted_status"]["text"]
+tweet["retweeted_status"]["user"]["screen_name"]
+
+tweet["quoted_status"]["text"]
+tweet["quoted_status"]["user"]["screen_name"]
