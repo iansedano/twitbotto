@@ -32,3 +32,22 @@ def insert_list():
 	               {'id': '3', 'name': 'record2', 'salary': 70000, 'active': True}]
 
 	result_proxy = connection.execute(query, new_records)
+
+
+def make_basic_record_list(list_to_import):
+	new_records = []
+	for tweet in list_to_import:
+		record = {}
+		record["created_at"] = tweet["created_at"]
+		record["id_str"] = tweet["id_str"]
+
+		record["user_id"] = tweet["user"]["id"]
+
+		#if "extended_tweet" in tweet:
+		#	record["text"] = tweet["extended_tweet"]["full_text"]
+		#else:
+		record["text"] = tweet["full_text"]
+
+		new_records.append(record)
+
+	return new_records

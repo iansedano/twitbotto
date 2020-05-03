@@ -25,7 +25,7 @@ today = date.today()
 delta = timedelta(days=-1)
 
 
-def get_tweets(search_term, json_path, type="popular", date=str(today), set_max_id='',set_since_id='',set_geocodes=''):
+def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_since_id='',set_geocodes=''):
 
 	tweets = tweepy.Cursor(api.search,
 		q=search_term,
@@ -34,6 +34,7 @@ def get_tweets(search_term, json_path, type="popular", date=str(today), set_max_
 		max_id=set_max_id,
 		since_id=set_since_id,
 		geocodes=set_geocodes,
+		tweet_mode="extended",
 		include_entities="false",
 		since=date).items(100)
 

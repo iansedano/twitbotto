@@ -20,7 +20,13 @@ import wordcloud_functions
 
 # testing
 
-tweets = twitter.get_tweets("trump", "..\\jsons\\test.json")
+tweets = twitter.get_tweets("trump")
 
-print(tweets)
+# json_functions.list_to_json(tweets, "..\\jsons\\test.json")
+
+
+record_list = database.make_basic_record_list(tweets)
+
+print(record_list)
+
 # read_json("..\\jsons\\test.json")
