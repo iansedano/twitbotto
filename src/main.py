@@ -22,7 +22,9 @@ import wordcloud_functions
 
 # testing
 
-tweets = twitter.get_tweets("trump")
+# tweets = twitter.get_tweets("trump")
+
+tweets = twitter.get_week_tweets("trump")
 
 # json_functions.list_to_json(tweets, "..\\jsons\\test.json")
 

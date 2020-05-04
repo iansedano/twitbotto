@@ -1,6 +1,7 @@
 import tweepy
 import secret
 import json
+import database
 import sys
 from datetime import date, timedelta
 from io import TextIOWrapper
@@ -26,7 +27,7 @@ delta = timedelta(days=-1)
 
 
 def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_since_id='',set_geocodes=''):
-
+	print(search_term)
 	tweets = tweepy.Cursor(api.search,
 		q=search_term,
 		lang="en",
@@ -36,7 +37,7 @@ def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_s
 		geocodes=set_geocodes,
 		tweet_mode="extended",
 		include_entities="false",
-		since=date).items(100)
+		until=date).items(100)
 
 	tweet_list =[]
 	for t in tweets:
@@ -44,5 +45,41 @@ def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_s
 
 	return tweet_list
 
-def get_many_tweets(seach_term):
+def get_week_tweets(search_term):
 	
+	search_id = database.make_search_id(today, search_term)
+
+	week = []
+	for i in range(7):
+		week.append(today - timedelta(days=i))
+
+	lots_of_tweets = []
+
+	for d in week:
+		
+		print(str(d))
+
+		tweets_popular = get_tweets(search_term, "popular", str(d))
+		for t in tweets_popular:
+			lots_of_tweets.append(t)
+
+		print(len(lots_of_tweets))
+
+		least_id = 9999999999999999999
+		tweets_recent = get_tweets(search_term, "recent", str(d))
+		for t in tweets_recent:
+			lots_of_tweets.append(t)
+			if int(t['id_str']) < least_id:
+				least_id = int(t['id_str'])
+
+		print(len(lots_of_tweets))
+
+		tweets_recent2 = get_tweets(search_term, "recent", str(d), least_id)
+		for t in tweets_recent2:
+			lots_of_tweets.append(t)
+			if int(t['id_str']) < least_id:
+				least_id = int(t['id_str'])
+
+		print(len(lots_of_tweets))
+
+	return lots_of_tweets
