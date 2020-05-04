@@ -5,3 +5,4 @@ twitbotto.sublime-workspace
 jsons/
 src/__pycache__/*
 *.pyc
+*.png

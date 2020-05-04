@@ -4,6 +4,8 @@ import database
 import json_functions
 import text_processing
 import twitter
+import re
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import wordcloud_functions
 
 
@@ -24,9 +26,12 @@ tweets = twitter.get_tweets("trump")
 
 # json_functions.list_to_json(tweets, "..\\jsons\\test.json")
 
-
 record_list = database.make_basic_record_list(tweets)
 
-print(record_list)
+text_block = text_processing.make_text_block(record_list)
+
+
+
+wordcloud_functions.make_wordcloud(text_block, "test.png", show=True)
 
 # read_json("..\\jsons\\test.json")

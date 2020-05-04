@@ -44,5 +44,5 @@ def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_s
 
 	return tweet_list
 
-
-
+def get_many_tweets(seach_term):
+	
