@@ -10,7 +10,7 @@ text = "Hobbits are an unobtrusive but very ancient people, more numerous former
 # Create and generate a word cloud image:
 
 stopwords = list(STOPWORDS)
-extra_stopwords = ["https", "co", "ly", "&amp;"]
+extra_stopwords = ["https", "co", "ly", "&amp;", "amp", "re", "dr"]
 for s in extra_stopwords:
     stopwords.append(s)
 
@@ -20,10 +20,13 @@ stopwords = set(stopwords)
 def make_wordcloud(text, path, show=False):
 
     wordcloud = WordCloud(
+        font_path="..\\resources\\Monolog-free.otf",
         width=600,
         height=600,
         stopwords=stopwords,
-        max_font_size=50,
+        colormap="inferno",
+        collocations=False,
+        max_font_size=100,
         max_words=100,
         background_color="white").generate(text)
 

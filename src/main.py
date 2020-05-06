@@ -23,11 +23,13 @@ import wordcloud_functions
 
 # tweets = twitter.get_tweets("trump")
 
-tweets = twitter.get_week_tweets("trump")
+# tweets = twitter.get_week_tweets("trump")
 
-# json_functions.list_to_json(tweets, "..\\jsons\\test.json")
+record_list = json_functions.read_json("..\\jsons\\test.json")
 
-record_list = database.make_basic_record_list(tweets)
+# record_list = database.make_basic_record_list(tweets)
+
+# json_functions.list_to_json(record_list, "..\\jsons\\test.json")
 
 text_block = text_processing.make_text_block(record_list)
 

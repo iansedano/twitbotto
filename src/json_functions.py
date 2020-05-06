@@ -9,6 +9,4 @@ def list_to_json(list_to_convert, json_path):
 
 def read_json(path):
     with open(path) as json_file:
-        data = json.load(json_file)
-        for tweet in data:
-            print(tweet['text'])
+        return json.load(json_file)
