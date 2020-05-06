@@ -20,8 +20,6 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 api = tweepy.API(auth)
 
-search_term = "python"
-
 today = date.today()
 delta = timedelta(days=-1)
 
@@ -52,8 +50,6 @@ def get_tweets(search_term,
 
 
 def get_week_tweets(search_term):
-
-    search_id = database.make_search_id(today, search_term)
 
     week = []
     for i in range(7):
