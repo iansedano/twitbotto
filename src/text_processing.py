@@ -1,5 +1,6 @@
 import re
 
+
 def make_text_block(dictionary):
     """Make text block form texts in dictionary of tweets."""
     separator = "   "

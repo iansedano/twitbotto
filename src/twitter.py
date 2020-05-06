@@ -26,60 +26,69 @@ today = date.today()
 delta = timedelta(days=-1)
 
 
-def get_tweets(search_term, type="popular", date=str(today), set_max_id='',set_since_id='',set_geocodes=''):
-	print(search_term)
-	tweets = tweepy.Cursor(api.search,
-		q=search_term,
-		lang="en",
-		result_type=type,
-		max_id=set_max_id,
-		since_id=set_since_id,
-		geocodes=set_geocodes,
-		tweet_mode="extended",
-		include_entities="false",
-		until=date).items(100)
+def get_tweets(search_term,
+               type="popular",
+               date=str(today),
+               set_max_id='',
+               set_since_id='',
+               set_geocodes=''):
+    print(search_term)
+    tweets = tweepy.Cursor(api.search,
+                           q=search_term,
+                           lang="en",
+                           result_type=type,
+                           max_id=set_max_id,
+                           since_id=set_since_id,
+                           geocodes=set_geocodes,
+                           tweet_mode="extended",
+                           include_entities="false",
+                           until=date).items(100)
 
-	tweet_list =[]
-	for t in tweets:
-		tweet_list.append(t._json)
+    tweet_list = []
+    for t in tweets:
+        tweet_list.append(t._json)
 
-	return tweet_list
+    return tweet_list
+
 
 def get_week_tweets(search_term):
-	
-	search_id = database.make_search_id(today, search_term)
 
-	week = []
-	for i in range(7):
-		week.append(today - timedelta(days=i))
+    search_id = database.make_search_id(today, search_term)
 
-	lots_of_tweets = []
+    week = []
+    for i in range(7):
+        week.append(today - timedelta(days=i))
 
-	for d in week:
-		
-		print(str(d))
+    lots_of_tweets = []
 
-		tweets_popular = get_tweets(search_term, "popular", str(d))
-		for t in tweets_popular:
-			lots_of_tweets.append(t)
+    for d in week:
 
-		print(len(lots_of_tweets))
+        print(str(d))
 
-		least_id = 9999999999999999999
-		tweets_recent = get_tweets(search_term, "recent", str(d))
-		for t in tweets_recent:
-			lots_of_tweets.append(t)
-			if int(t['id_str']) < least_id:
-				least_id = int(t['id_str'])
+        tweets_popular = get_tweets(
+            search_term, "popular", str(d))
+        for t in tweets_popular:
+            lots_of_tweets.append(t)
 
-		print(len(lots_of_tweets))
+        print(len(lots_of_tweets))
 
-		tweets_recent2 = get_tweets(search_term, "recent", str(d), least_id)
-		for t in tweets_recent2:
-			lots_of_tweets.append(t)
-			if int(t['id_str']) < least_id:
-				least_id = int(t['id_str'])
+        least_id = 9999999999999999999
+        tweets_recent = get_tweets(
+            search_term, "recent", str(d))
+        for t in tweets_recent:
+            lots_of_tweets.append(t)
+            if int(t['id_str']) < least_id:
+                least_id = int(t['id_str'])
 
-		print(len(lots_of_tweets))
+        print(len(lots_of_tweets))
 
-	return lots_of_tweets
+        tweets_recent2 = get_tweets(
+            search_term, "recent", str(d), least_id)
+        for t in tweets_recent2:
+            lots_of_tweets.append(t)
+            if int(t['id_str']) < least_id:
+                least_id = int(t['id_str'])
+
+        print(len(lots_of_tweets))
+
+    return lots_of_tweets
