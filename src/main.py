@@ -20,7 +20,7 @@ import wordcloud_functions
 # have to go from 7 days to today
 
 # ++++++++ SEARCH TERM +++++++++
-search_term = "coding"
+search_term = "python"
 # ++++++++++++++++++++++++++++++
 
 today = date.today()

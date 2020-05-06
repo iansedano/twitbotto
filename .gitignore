@@ -2,7 +2,6 @@ secret.py
 twitbotto.sublime-project
 twitbotto.sublime-workspace
 *.json
-jsons/
 src/__pycache__/*
 *.pyc
 *.png
