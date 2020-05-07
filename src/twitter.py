@@ -30,7 +30,6 @@ def get_tweets(search_term,
                set_max_id='',
                set_since_id='',
                set_geocodes=''):
-    print(search_term)
     tweets = tweepy.Cursor(api.search,
                            q=search_term,
                            lang="en",
