@@ -59,14 +59,14 @@ def get_week_tweets(search_term):
 
     for d in week:
 
-        print(str(d))
+        print(d)
 
         tweets_popular = get_tweets(
             search_term, "popular", str(d))
         for t in tweets_popular:
             lots_of_tweets.append(t)
 
-        print(len(lots_of_tweets))
+        print(f"Running Total: {len(lots_of_tweets)}")
 
         least_id = 9999999999999999999
         tweets_recent = get_tweets(
@@ -76,7 +76,7 @@ def get_week_tweets(search_term):
             if int(t['id_str']) < least_id:
                 least_id = int(t['id_str'])
 
-        print(len(lots_of_tweets))
+        print(f"Running Total: {len(lots_of_tweets)}")
 
         tweets_recent2 = get_tweets(
             search_term, "recent", str(d), least_id)
@@ -85,6 +85,6 @@ def get_week_tweets(search_term):
             if int(t['id_str']) < least_id:
                 least_id = int(t['id_str'])
 
-        print(len(lots_of_tweets))
+        print(f"Running Total: {len(lots_of_tweets)}")
 
     return lots_of_tweets

@@ -5,22 +5,17 @@ from sqlalchemy.dialects.mysql import insert
 import pymysql
 from pprint import pprint
 
+
 def make_basic_record_list(list_to_import):
     new_records = []
     for tweet in list_to_import:
         record = {}
         record["created_at"] = tweet["created_at"]
         record["id_str"] = tweet["id_str"]
-
         record["user_id"] = tweet["user"]["id"]
-
-        # if "extended_tweet" in tweet:
-        #    record["text"] = tweet["extended_tweet"]["full_text"]
-        # else:
         record["text"] = tweet["full_text"]
 
         new_records.append(record)
-
     return new_records
 
 

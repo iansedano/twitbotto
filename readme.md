@@ -17,18 +17,29 @@ pip install wordcloud
 
 The tweepy library is also used `pip install tweepy`
 
+You will need to get a twitter developer account and have these keys stored as variable in the src folder with filename `secret.py`
+```
+CONSUMER_KEY = "your key"
+CONSUMER_SECRET = "your key"
+ACCESS_TOKEN = "your key"
+ACCESS_SECRET = "your key"
+```
+
 ## Usage
 
-in the main.py file there is a variable called search term, fill this with whatever you want, though it should be a trending word, or at least something that will produce many tweets from the last 7 days (limit of twitter free API search).
+In the main.py file there is a variable called search term, fill this with whatever you want, though it should be a trending word, or at least something that will produce many tweets from the last 7 days (limit of twitter free API search).
+
 ```python
 # ++++++++ SEARCH TERM +++++++++
 search_term = ""
 # ++++++++++++++++++++++++++++++
 ```
+
 This can only run once in the space of 15 minutes, any more than that and you will run into the limit returning
 ```
 tweepy.error.TweepError: Twitter error response: status code = 429
 ```
+
 
 See the docs for wordcloud, twitter API, tweepy for more info. Or message me directly.
 
