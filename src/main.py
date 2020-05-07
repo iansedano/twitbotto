@@ -4,20 +4,20 @@ import database
 import json_functions
 import text_processing
 import twitter
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 import re
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import wordcloud_functions
 
 
 # Place search term below
-# Will attempt to return maximum 2100 tweets
+# Will attempt to return maximum 2800 tweets
 # from last 7 days.
 # Maximum unique tweets retrieved in one operation
-# while testing was around 1500.
+# while testing was around 2400.
 
 # ++++++++ SEARCH TERM +++++++++
-search_term = "coding"
+search_term = "green"
 # ++++++++++++++++++++++++++++++
 
 today = date.today()
@@ -67,3 +67,8 @@ text_block = text_processing.make_text_block(record_list)
 
 # Creating wordcloud
 wordcloud_functions.make_wordcloud(text_block, wordcloud_filename, show=True)
+
+# Print current time so know when 15 mins have passed.
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)

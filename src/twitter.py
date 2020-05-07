@@ -86,4 +86,13 @@ def get_week_tweets(search_term):
 
         print(f"Running Total: {len(lots_of_tweets)}")
 
+        tweets_recent3 = get_tweets(
+            search_term, "recent", str(d), least_id)
+        for t in tweets_recent3:
+            lots_of_tweets.append(t)
+            if int(t['id_str']) < least_id:
+                least_id = int(t['id_str'])
+
+        print(f"Running Total: {len(lots_of_tweets)}")
+
     return lots_of_tweets
