@@ -17,7 +17,7 @@ import wordcloud_functions
 # while testing was around 2400.
 
 # ++++++++ SEARCH TERM +++++++++
-search_term = "green"
+search_term = "python"
 # ++++++++++++++++++++++++++++++
 
 today = date.today()
